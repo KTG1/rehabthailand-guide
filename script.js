@@ -74,6 +74,81 @@ const questionTopics = [
   ]}
 ];
 
+const additionalQuestions = {
+  alcohol: [
+    ['How often will I receive one-to-one therapy?', 'Ask for a minimum number and session length in writing, plus the qualifications of the therapist you will see.'],
+    ['Does the programme involve my family?', 'Family education and therapy can help rebuild trust and prepare everyone for boundaries after treatment.'],
+    ['How is sleep treated without alcohol?', 'Ask how the medical team assesses insomnia and which non-addictive treatments and routines are used.'],
+    ['Can the centre help with liver or other health problems?', 'Confirm what tests are available, which conditions can be monitored and when a hospital or specialist is required.'],
+    ['How will I prepare for social drinking situations?', 'Treatment should include practical rehearsal for work events, travel, relationships and other situations where alcohol is present.']
+  ],
+  drugs: [
+    ['How does the centre handle prescription medication?', 'Bring original prescriptions and disclose everything before travel. Ask which medicines are restricted and who approves changes.'],
+    ['Are behavioural addictions treated too?', 'Ask whether gambling, sex, gaming or compulsive spending can be addressed alongside substance use without diluting the core plan.'],
+    ['How are overdose risks discussed?', 'A safe discharge plan should address reduced tolerance, emergency response and access to naloxone where relevant and lawful.'],
+    ['Will treatment address pain management?', 'If pain contributed to drug use, ask how medical and psychological care will provide realistic alternatives.'],
+    ['What testing happens before admission?', 'Clarify whether blood tests, ECGs, toxicology or infectious-disease screening are needed and who receives the results.']
+  ],
+  detox: [
+    ['How long will detox take?', 'The answer should be personalised after assessment; fixed promises made before a clinical review are a warning sign.'],
+    ['Can a companion stay during detox?', 'Policies differ. Ask about visits, accommodation, privacy and whether family presence is clinically appropriate.'],
+    ['How are withdrawal symptoms measured?', 'Ask whether staff use recognised assessment tools, regular observations and documented escalation thresholds.'],
+    ['What happens immediately after detox?', 'Detox alone rarely supports lasting recovery. Confirm the direct transition into therapy and relapse-prevention work.'],
+    ['Can I fly straight after detox?', 'Get individual medical advice about stability, medication, travel time and the risk of leaving treatment too early.']
+  ],
+  dual: [
+    ['Which conditions would prevent admission?', 'Ask directly about psychosis, mania, eating disorders, self-harm risk and other needs requiring specialist or hospital care.'],
+    ['How are ADHD medications handled?', 'Controlled stimulants may be restricted. Confirm the policy and clinically appropriate alternatives before paying.'],
+    ['Is psychological testing available?', 'Ask what assessments are used, who interprets them and whether reports are recognised by clinicians in your home country.'],
+    ['How are addiction and mental health sessions coordinated?', 'The same treatment plan should connect both needs, with communication between medical and therapy teams.'],
+    ['Can the centre communicate with my home psychiatrist?', 'With your consent, coordinated records and medication planning can reduce gaps when you return home.']
+  ],
+  trauma: [
+    ['Is trauma processing required during the stay?', 'No single method suits everyone. Stabilisation and safety may be more appropriate than intensive processing during early recovery.'],
+    ['Are private sessions available more than once weekly?', 'Ask what is included, what additional sessions cost and how extra work fits safely into the programme.'],
+    ['How does the centre support dissociation?', 'Staff should recognise it, use grounding and safety plans, and know when specialist or hospital support is necessary.'],
+    ['Are groups separated by need or gender?', 'Ask how groups are composed and what options exist if a group setting feels unsafe or clinically unsuitable.'],
+    ['What credentials should an EMDR therapist have?', 'Request current professional registration, formal EMDR training and relevant supervised clinical experience.']
+  ],
+  private: [
+    ['How many clients are on site?', 'A low advertised capacity matters only if you also know group size, staffing levels and current occupancy.'],
+    ['Can the centre use an alias for my booking?', 'Ask what is possible while still meeting medical, immigration, payment and emergency-identification requirements.'],
+    ['Are private transfers included?', 'Confirm vehicle type, driver confidentiality, airport meeting arrangements and any additional charge.'],
+    ['Can dietary and accessibility needs be met?', 'Get written confirmation about allergies, mobility, religious needs and the physical accessibility of bedrooms and therapy spaces.'],
+    ['What happens if media or colleagues contact the centre?', 'The privacy policy should explain identity verification, disclosure rules and how staff respond to outside enquiries.']
+  ],
+  affordable: [
+    ['Can I compare prices per clinical hour?', 'Ask how many individual, group, medical and psychiatric hours are included rather than comparing room prices alone.'],
+    ['What is the refund policy?', 'Read the rules for denied admission, early departure, hospital transfer, relapse and visa or flight disruption.'],
+    ['Can insurance pay the centre directly?', 'Ask both the provider and insurer about pre-authorisation, direct billing, reimbursement documents and exclusions.'],
+    ['Would outpatient care be more appropriate?', 'For some people, safe local outpatient treatment offers better continuity and value than international residential care.'],
+    ['Are flights and visa costs part of my budget?', 'Include flexible travel, insurance, visa extensions, medication and funds for an unexpectedly longer stay.']
+  ],
+  'twelve-step': [
+    ['How many meetings take place each week?', 'Request a sample timetable showing meetings alongside clinical therapy, exercise, rest and individual work.'],
+    ['Does the centre use confrontation?', 'Ask how feedback is delivered and whether the culture is trauma-informed, respectful and free from humiliation.'],
+    ['Can I choose a different recovery pathway?', 'A person-centred centre should explain alternatives and avoid treating one philosophy as the only valid route.'],
+    ['Are local meetings available in English?', 'Confirm language, transport, meeting type and whether newcomers are supported during off-site attendance.'],
+    ['What support exists for atheists or other faiths?', 'Ask how spiritual language is adapted and whether religious practices are optional, inclusive and clearly explained.']
+  ],
+  family: [
+    ['How often will the centre update us?', 'Agree on who can receive updates, how often, through which channel and what requires the client’s consent.'],
+    ['What should family do during the stay?', 'Useful programmes give relatives structured learning and support rather than asking them simply to wait for discharge.'],
+    ['How are children included?', 'Ask for age-appropriate guidance from qualified staff and avoid placing responsibility for recovery on a child.'],
+    ['Can family visit Thailand during treatment?', 'Confirm timing, accommodation, therapeutic purpose and whether visits could interrupt stabilisation.'],
+    ['What boundaries should be ready for discharge?', 'The plan should cover housing, money, communication, substance use at home and what happens if safety deteriorates.']
+  ],
+  aftercare: [
+    ['Will I receive copies of my records?', 'Ask which discharge summary, medication list, test results and treatment recommendations are provided and in what language.'],
+    ['How soon should my first home appointment be?', 'Ideally it is arranged before discharge and happens promptly after arrival, based on your clinical risk and travel plan.'],
+    ['Can time-zone differences affect online care?', 'Confirm appointment windows, emergency limitations and who supports you when the Thailand team is offline.'],
+    ['Should I use sober living after Thailand?', 'Ask whether a structured step-down environment fits your risks, responsibilities, location and available local options.'],
+    ['How will progress be measured after discharge?', 'Agree on practical markers such as attendance, wellbeing, medication follow-up, recovery supports and an early-response plan.']
+  ]
+};
+
+questionTopics.forEach((topic) => topic.questions.push(...additionalQuestions[topic.id]));
+
 const labelRail = document.querySelector('.label-rail');
 const qaPanel = document.querySelector('.qa-panel');
 
@@ -84,7 +159,7 @@ function renderTopic(topic, focusPanel = false) {
     button.setAttribute('aria-selected', String(active));
     button.tabIndex = active ? 0 : -1;
   });
-  qaPanel.innerHTML = `<div class="qa-panel-head"><span>${topic.label}</span><p>${topic.intro}</p></div><div class="qa-list">${topic.questions.map(([question, answer], index) => `<details ${index === 0 ? 'open' : ''}><summary><b>${String(index + 1).padStart(2, '0')}</b>${question}<span></span></summary><p>${answer}</p></details>`).join('')}</div>`;
+  qaPanel.innerHTML = `<div class="qa-panel-head"><p class="eyebrow">Your care compass · ${topic.label}</p><h2>Ten questions<br>before you choose</h2><p>${topic.intro} A polished website cannot tell you whether a programme is clinically right for you. These questions can.</p></div><div class="qa-list">${topic.questions.map(([question, answer], index) => `<details open><summary><b>${String(index + 1).padStart(2, '0')}</b><span class="q-title">${question}</span></summary><p>${answer}</p></details>`).join('')}</div>`;
   if (focusPanel) qaPanel.focus({ preventScroll: true });
 }
 
