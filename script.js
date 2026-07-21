@@ -159,7 +159,7 @@ function renderTopic(topic, focusPanel = false) {
     button.setAttribute('aria-selected', String(active));
     button.tabIndex = active ? 0 : -1;
   });
-  qaPanel.innerHTML = `<div class="qa-panel-head"><p class="eyebrow">Your care compass · ${topic.label}</p><h2>Ten questions<br>before you choose</h2><p>${topic.intro} A polished website cannot tell you whether a programme is clinically right for you. These questions can.</p></div><div class="qa-list">${topic.questions.map(([question, answer], index) => `<article class="qa-row"><span class="qa-number">${String(index + 1).padStart(2, '0')}</span><div class="qa-copy"><h3>${question}</h3><p>${answer}</p></div></article>`).join('')}</div>`;
+  qaPanel.innerHTML = `<div class="qa-panel-head"><p class="eyebrow">Your care compass · ${topic.label}</p><h2>Ten questions<br>before you choose</h2><p>${topic.intro} A polished website cannot tell you whether a programme is clinically right for you. These questions can.</p></div><div class="qa-list">${topic.questions.map(([question, answer], index) => `<details class="qa-row" ${index === 0 ? 'open' : ''}><summary><span class="qa-number">${String(index + 1).padStart(2, '0')}</span><h3>${question}</h3><i aria-hidden="true"></i></summary><div class="qa-answer"><p>${answer}</p></div></details>`).join('')}</div>`;
   if (focusPanel) qaPanel.focus({ preventScroll: true });
 }
 
@@ -186,6 +186,21 @@ labelRail.addEventListener('keydown', (event) => {
 });
 qaPanel.tabIndex = -1;
 renderTopic(questionTopics[0]);
+
+qaPanel.addEventListener('toggle', (event) => {
+  const opened = event.target;
+  if (!(opened instanceof HTMLDetailsElement) || !opened.open) return;
+  qaPanel.querySelectorAll('.qa-row[open]').forEach((row) => { if (row !== opened) row.open = false; });
+}, true);
+
+document.querySelectorAll('.contact-form').forEach((form) => {
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    form.querySelector('.form-status').textContent = form.dataset.success;
+    form.reset();
+  });
+});
 
 filters.forEach((button) => {
   button.addEventListener('click', () => {
