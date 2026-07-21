@@ -159,7 +159,7 @@ function renderTopic(topic, focusPanel = false) {
     button.setAttribute('aria-selected', String(active));
     button.tabIndex = active ? 0 : -1;
   });
-  qaPanel.innerHTML = `<div class="qa-panel-head"><p class="eyebrow">Your care compass · ${topic.label}</p><h2>Ten questions<br>before you choose</h2><p>${topic.intro} A polished website cannot tell you whether a programme is clinically right for you. These questions can.</p></div><div class="qa-list">${topic.questions.map(([question, answer], index) => `<details open><summary><b>${String(index + 1).padStart(2, '0')}</b><span class="q-title">${question}</span></summary><p>${answer}</p></details>`).join('')}</div>`;
+  qaPanel.innerHTML = `<div class="qa-panel-head"><p class="eyebrow">Your care compass · ${topic.label}</p><h2>Ten questions<br>before you choose</h2><p>${topic.intro} A polished website cannot tell you whether a programme is clinically right for you. These questions can.</p></div><div class="qa-list">${topic.questions.map(([question, answer], index) => `<article class="qa-row"><span class="qa-number">${String(index + 1).padStart(2, '0')}</span><div class="qa-copy"><h3>${question}</h3><p>${answer}</p></div></article>`).join('')}</div>`;
   if (focusPanel) qaPanel.focus({ preventScroll: true });
 }
 
